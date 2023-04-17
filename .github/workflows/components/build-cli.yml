@@ -1,0 +1,49 @@
+name: DiskANN Build CLI Applications
+on:
+  workflow_call:
+    inputs:
+      runner-os:
+        required: true
+        type: string
+      build-type:
+        required: true
+        type: string
+    jobs:
+      build:
+        name: Build for ${{inputs.runner-os}}
+        runs-on: ${{inputs.runner-os}}
+        defaults:
+          run:
+            shell: bash
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v2
+            with:
+              submodules: true
+          # ------------ Linux Build ---------------
+          - name: Prepare and Execute Build
+            if: ${{ runner.os == 'ubuntu-latest' }}
+            run: |
+              sudo scripts/install-linux-deps.sh 
+              cmake -S . -B build -DCMAKE_BUILD_TYPE=${{inputs.build-type}}
+              cmake --build build -- -j
+          - uses: actions/upload-artifact@v3
+            if: ${{ runner.os == 'ubuntu-latest' }}
+            with:
+              name: cli-store-linux
+              path: ./build/tests/
+          # ------------ End Linux Build ---------------
+          # ------------ Windows Build ---------------
+          - name: Add VisualStudio command line tools into path
+            if: runner.os == 'Windows'
+            uses: ilammy/msvc-dev-cmd@v1
+          - name: Run configure and build for Windows
+            if: runner.os == 'Windows'
+            run: |
+              mkdir build && cd build && cmake .. && msbuild diskann.sln /m /nologo /t:Build /p:Configuration="${{inputs.build-type}}" /property:Platform="x64" -consoleloggerparameters:"ErrorsOnly;Summary"
+            shell: cmd
+          - uses: actions/upload-artifact@v3
+            if: runner.os == 'Windows'
+            with:
+              name: cli-store-windows
+              path: ./x64/${{inputs.build-type}}/
