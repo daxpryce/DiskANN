@@ -1,0 +1,43 @@
+name: DiskANN Acceptance Tests
+on:
+  workflow_call:
+    jobs:
+      acceptance-tests:
+        name: Acceptance Tests on ${{inputs.runner-os}}
+        runs-on: ${{inputs.runner-os}}
+        strategy:
+          fail-fast: false
+          matrix:
+            os: [ubuntu-latest, windows-2019, windows-latest]
+        defaults:
+          run:
+            shell: bash
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v2
+            with:
+              submodules: true
+
+          - uses: actions/download-artifact@v3
+            if: runner.os != "Windows"
+            with:
+              name: cli-store-linux
+              path: bin/
+
+          - uses: actions/download-artifact@v3
+            if: runner.os == "Windows"
+            with:
+              name: cli-store-windows
+              path: bin/
+
+          - uses: actions/download-artifact@v3
+            with:
+              name: generated-data
+              path: data/
+
+          - name: Build and search in-memory index, dtype ${{matrix.dtype-and-norm.dtype}}, dist_fn ${{matrix.distance-function}}
+            run: |
+              bin/build_memory_index --data_type ${{matrix.dtype-and-norm.dtype}} --dist_fn ${{matrix.distance-function}} --data_path data/rand_${{matrix.dtype-and-norm.dtype}}_10D_10K_norm${{matrix.dtype-and-norm.norm}}.bin --index_path_prefix data/index_${{matrix.distance-function}}_rand_${{matrix.dtype-and-norm.dtype}}_10D_10K_norm${{matrix.dtype-and-norm.norm}}
+              bin/search_memory_index --data_type ${{matrix.dtype-and-norm.dtype}} --dist_fn ${{matrix.distance-function}} --fail_if_recall_below 70 --index_path_prefix data/index_${{matrix.distance-function}}_rand_${{matrix.dtype}}_10D_10K_norm${{matrix.dtype-and-norm.norm}} --query_file data/rand_${{matrix.dtype}}_10D_1K_norm${{matrix.dtype-and-norm.norm}}.bin --recall_at 10 --result_path temp --gt_file data/${{matrix.distance-type}}_rand_${{matrix.dtype}}_10D_10K_norm${{matrix.dtype-and-norm.norm}}_10D_1K_norm${{matrix.dtype-and-norm.norm}}_gt100 -L  16 32
+
+          - name:

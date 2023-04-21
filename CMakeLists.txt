@@ -15,15 +15,18 @@
 #   Contact for this feature: gopalrs.
 
 # Some variables like MSVC are defined only after project(), so put that first.
-project(diskann)
 
 cmake_minimum_required(VERSION 3.15)
+
+project(diskann)
 
 set(CMAKE_STANDARD 14)
 
 if(NOT MSVC)
 	set(CMAKE_CXX_COMPILER g++)
 endif()
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 # Install nuget packages for dependencies.
 if (MSVC)
@@ -242,8 +245,10 @@ else()
 endif()
 
 add_subdirectory(src)
-add_subdirectory(tests)
-add_subdirectory(tests/utils)
+if (NOT PYBIND)
+    add_subdirectory(apps)
+    add_subdirectory(apps/utils)
+endif()
 
 if (MSVC)
     message(STATUS "The ${PROJECT_NAME}.sln has been created, opened it from VisualStudio to build Release or Debug configurations.\n"
@@ -258,11 +263,10 @@ if (RESTAPI)
         link_libraries("${DISKANN_CPPRESTSDK}/x64/lib/cpprest142_2_10.lib")
         include_directories("${DISKANN_CPPRESTSDK}/include")
     endif()
-    add_subdirectory(tests/restapi)
+    add_subdirectory(apps/restapi)
 endif()
 
 include(clang-format.cmake)
-
 
 if(PYBIND)
     add_subdirectory(python)

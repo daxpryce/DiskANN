@@ -31,7 +31,7 @@ on:
             if: ${{ runner.os == 'ubuntu-latest' }}
             with:
               name: cli-store-linux
-              path: ./build/tests/
+              path: ./build/apps/
           # ------------ End Linux Build ---------------
           # ------------ Windows Build ---------------
           - name: Add VisualStudio command line tools into path
@@ -47,3 +47,4 @@ on:
             with:
               name: cli-store-windows
               path: ./x64/${{inputs.build-type}}/
+          # ------------ End Windows Build ---------------
