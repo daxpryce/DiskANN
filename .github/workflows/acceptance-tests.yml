@@ -83,7 +83,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-2019, windows-latest]
-
+    runs-on: ${{matrix.os}}
     defaults:
       run:
         shell: bash
@@ -134,7 +134,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-2019, windows-latest]
-
+    runs-on: ${{matrix.os}}
     defaults:
       run:
         shell: bash
@@ -236,7 +236,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-2019, windows-latest]
-
+    runs-on: ${{matrix.os}}
     defaults:
       run:
         shell: bash
@@ -318,7 +318,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-2019, windows-latest]
-
+    runs-on: ${{matrix.os}}
     defaults:
       run:
         shell: bash
