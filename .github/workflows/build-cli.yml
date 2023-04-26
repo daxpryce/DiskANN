@@ -1,5 +1,5 @@
 name: DiskANN Build CLI Applications
-on: [workflow-call]
+on: [workflow_call]
 jobs:
   build:
     strategy:

@@ -1,5 +1,5 @@
 name: DiskANN Build Python Wheel
-on: [workflow-call]
+on: [workflow_call]
 jobs:
   strategy:
     fail-fast: false
