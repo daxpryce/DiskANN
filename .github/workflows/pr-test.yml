@@ -5,6 +5,7 @@ jobs:
     name: Check Formatting with clang-format
     uses: ./.github/workflows/check-format.yml
   docker-container-build:
+    name: Build Docker Container
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
