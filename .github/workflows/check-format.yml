@@ -1,0 +1,13 @@
+name: Generate Random Test Data
+on: [workflow_call]
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Check Formatting with clang-format
+        run: |
+          sudo scripts/install-linux-deps.sh 
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          make -C build check-format

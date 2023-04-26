@@ -1,6 +1,9 @@
 name: DiskANN Push Build
 on: [push]
 jobs:
+  check-format:
+    name: Check Formatting with clang-format
+    uses: ./.github/workflows/check-format.yml
   build:
     name: DiskANN Build CLI Applications
     uses: ./.github/workflows/build-cli.yml
