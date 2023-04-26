@@ -36,6 +36,7 @@ skip = "pp* *musllinux*"
 
 [tool.cibuildwheel.linux]
 before-all = """\
+    cat /etc/apt/sources.list && \
     apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y wget make cmake g++ libaio-dev libgoogle-perftools-dev libunwind-dev clang-format libboost-dev libboost-program-options-dev && \
