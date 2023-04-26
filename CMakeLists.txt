@@ -143,12 +143,13 @@ else()
     set(MKL_ROOT /opt/intel/oneapi/mkl/latest CACHE PATH "Intel OneAPI MKL library implementation path")
     link_directories(${OMP_PATH} ${MKL_ROOT}/lib/intel64)
     include_directories(${MKL_ROOT}/include)
-    # todo: make sure that the link_directories and include_directories for mkl also include paths that are used
-    # when using a RH derivative distro (for python build through cibuildwheel)
 
     # expected path for apt packaged intel mkl installs
     link_directories(/usr/lib/x86_64-linux-gnu/mkl)
     include_directories(/usr/include/mkl)
+    
+    # todo: make sure that the link_directories and include_directories for mkl also include paths that are used
+    # when using a RH derivative distro (for python build through cibuildwheel)
 
     # compile flags and link libraries
     add_compile_options(-m64 -Wl,--no-as-needed)
