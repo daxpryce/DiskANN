@@ -10,10 +10,10 @@ jobs:
         run: |
           docker build .
   build:
-    uses: ./.github/workflows/components/build-cli.yml
+    uses: ./.github/workflows/build-cli.yml
   data:
-    uses: ./.github/workflows/components/generate-random-test-data.yml
+    uses: ./.github/workflows/generate-random-test-data.yml
   acceptance:
-    uses: ./.github/workflows/components/acceptance-tests.yml
+    uses: ./.github/workflows/acceptance-tests.yml
   python:
-    uses: ./.github/workflows/components/build-python.yml
+    uses: ./.github/workflows/build-python.yml
