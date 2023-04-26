@@ -22,7 +22,7 @@ jobs:
   acceptance:
     name: DiskANN Acceptance Tests
     uses: ./.github/workflows/acceptance-tests.yml
-    needs: [build, acceptance]
+    needs: [build, data]
 #  python:
 #    name: DiskANN Build Python Wheel
 #    uses: ./.github/workflows/build-python.yml
