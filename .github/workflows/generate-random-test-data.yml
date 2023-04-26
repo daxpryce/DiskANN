@@ -21,7 +21,8 @@ jobs:
           mkdir data
           set -x
           
-          chmod +x bin/utils/rand_data_gen bin/utils/compute_ground_truth bin/utils/generate_synthetic_labels bin/utils/compute_groundtruth_for_filters bin/utils/compute_groundtruth_for_filters
+          find bin/ -maxdepth 1 -type f -print0 | xargs -0 chmod +x
+          find bin/utils -maxdepth 1 -type f -print0 | xargs -0 chmod +x
 
           echo "Generating random vectors for index"
           bin/utils/rand_data_gen --data_type float --output_file data/rand_float_10D_10K_norm1.0.bin -D 10 -N 10000 --norm 1.0
