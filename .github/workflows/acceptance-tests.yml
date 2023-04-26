@@ -17,7 +17,7 @@ jobs:
           submodules: true
 
       - uses: actions/download-artifact@v3
-        if: runner.os != "Windows"
+        if: runner.os == "Linux"
         with:
           name: cli-store-linux
           path: bin/
