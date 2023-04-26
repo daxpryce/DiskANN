@@ -10,10 +10,14 @@ jobs:
         run: |
           docker build .
   build:
+    name: DiskANN Build CLI Applications
     uses: ./.github/workflows/build-cli.yml
   data:
+    name: Generate Random Test Data
     uses: ./.github/workflows/generate-random-test-data.yml
   acceptance:
+    name: DiskANN Acceptance Tests
     uses: ./.github/workflows/acceptance-tests.yml
   python:
+    name: DiskANN Build Python Wheel
     uses: ./.github/workflows/build-python.yml

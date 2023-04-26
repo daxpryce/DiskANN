@@ -2,6 +2,8 @@ name: DiskANN Push Build
 on: [push]
 jobs:
   build:
+    name: DiskANN Build CLI Applications
     uses: ./.github/workflows/build-cli.yml
   python:
+    name: DiskANN Build Python Wheel
     uses: ./.github/workflows/build-python.yml
