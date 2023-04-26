@@ -16,7 +16,7 @@ jobs:
       - name: Generate Random Points and Compute Groundtruth
         run: |
           mkdir data
-          pwd
+          ls -R bin
           
           echo "Generating random vectors for index"
           bin/rand_data_gen --data_type float --output_file data/rand_float_10D_10K_norm1.0.bin -D 10 -N 10000 --norm 1.0
