@@ -10,4 +10,4 @@ jobs:
         run: |
           sudo scripts/install-linux-deps.sh 
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-          make -C build check-format
+          make -C build checkformat
