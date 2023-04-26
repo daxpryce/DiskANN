@@ -1,17 +1,14 @@
 name: DiskANN Build CLI Applications
 on:
   workflow_call:
-    inputs:
-      runner-os:
-        required: true
-        type: string
-      build-type:
-        required: true
-        type: string
     jobs:
       build:
-        name: Build for ${{inputs.runner-os}}
-        runs-on: ${{inputs.runner-os}}
+        strategy:
+          fail-fast: false
+          matrix:
+            os: [ubuntu-latest, windows-2019, windows-latest]
+        name: Build for ${{matrix.os}}
+        runs-on: ${{matrix.os}}
         defaults:
           run:
             shell: bash
