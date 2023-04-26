@@ -1,13 +1,13 @@
 name: DiskANN Build Python Wheel
 on: [workflow_call]
 jobs:
-  strategy:
-    fail-fast: false
-    matrix:
-      os: [ubuntu-latest]
-      python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
   build:
     name: Build for ${{matrix.python-version}} on ${{matrix.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
     runs-on: ${{matrix.os}}
     defaults:
       run:
