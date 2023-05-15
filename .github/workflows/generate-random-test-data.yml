@@ -15,6 +15,7 @@ jobs:
           path: bin/
       - name: List Directory Contents
         run: |
+          echo "Listing Directory Contents of root dir"
           ls -R .
       - name: Generate Random Points and Compute Groundtruth
         run: |
