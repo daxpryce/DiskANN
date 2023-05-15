@@ -15,6 +15,7 @@ jobs:
         run: |
           sudo scripts/install-linux-deps.sh
       - name: List Directory Contents
+        working-directory: ./dist/
         run: |
           echo "Listing Directory Contents of root dir"
           ls -R .
