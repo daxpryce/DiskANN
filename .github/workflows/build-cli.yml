@@ -23,11 +23,12 @@ jobs:
           sudo scripts/install-linux-deps.sh 
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
           cmake --build build -- -j
+          cmake --install build --prefix="dist"
       - uses: actions/upload-artifact@v3
         if: ${{ runner.os == 'Linux' }}
         with:
           name: cli-store-linux
-          path: ./build/apps/
+          path: ./dist
       # ------------ End Linux Build ---------------
       # ------------ Windows Build ---------------
       - name: Add VisualStudio command line tools into path
