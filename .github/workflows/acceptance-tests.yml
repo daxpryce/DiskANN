@@ -94,13 +94,13 @@ jobs:
           submodules: true
 
       - uses: actions/download-artifact@v3
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         with:
           name: cli-store-linux
           path: bin/
 
       - uses: actions/download-artifact@v3
-        if: runner.os == "Windows"
+        if: runner.os == 'Windows'
         with:
           name: cli-store-windows
           path: bin/
@@ -145,13 +145,13 @@ jobs:
           submodules: true
 
       - uses: actions/download-artifact@v3
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         with:
           name: cli-store-linux
           path: bin/
 
       - uses: actions/download-artifact@v3
-        if: runner.os == "Windows"
+        if: runner.os == 'Windows'
         with:
           name: cli-store-windows
           path: bin/
@@ -247,13 +247,13 @@ jobs:
           submodules: true
 
       - uses: actions/download-artifact@v3
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         with:
           name: cli-store-linux
           path: bin/
 
       - uses: actions/download-artifact@v3
-        if: runner.os == "Windows"
+        if: runner.os == 'Windows'
         with:
           name: cli-store-windows
           path: bin/
@@ -329,13 +329,13 @@ jobs:
           submodules: true
 
       - uses: actions/download-artifact@v3
-        if: runner.os != "Windows"
+        if: runner.os != 'Windows'
         with:
           name: cli-store-linux
           path: bin/
 
       - uses: actions/download-artifact@v3
-        if: runner.os == "Windows"
+        if: runner.os == 'Windows'
         with:
           name: cli-store-windows
           path: bin/
