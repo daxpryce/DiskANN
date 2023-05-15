@@ -13,6 +13,9 @@ jobs:
         with:
           name: cli-store-linux
           path: bin/
+      - name: List Directory Contents
+        run: |
+          ls -R .
       - name: Generate Random Points and Compute Groundtruth
         run: |
           mkdir data
