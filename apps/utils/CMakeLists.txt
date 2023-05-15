@@ -77,7 +77,6 @@ add_executable(stats_label_data stats_label_data.cpp)
 target_link_libraries(stats_label_data ${PROJECT_NAME} Boost::program_options)
 
 include(GNUInstallDirs)
-
 install(TARGETS fvecs_to_bin
         fvecs_to_bvecs
         rand_data_gen
