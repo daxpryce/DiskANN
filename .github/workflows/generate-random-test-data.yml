@@ -11,12 +11,10 @@ jobs:
         with:
           name: cli-store-linux
           path: dist
-      - name: Install Dependencies
-        run: |
-          sudo scripts/install-linux-deps.sh
       - name: Generate Random Points and Compute Groundtruth
         working-directory: ./dist/
         run: |
+          ldconfig $(readlink lib)
           find bin -type f -print0 | xargs -0 chmod +x
           mkdir data
           
@@ -65,4 +63,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: generated-data
-          path: ./data/
+          path: ./dist/data/

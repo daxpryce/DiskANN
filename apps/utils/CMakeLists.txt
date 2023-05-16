@@ -102,6 +102,7 @@ install(TARGETS fvecs_to_bin
         create_disk_layout
         generate_synthetic_labels
         stats_label_data
+        RUNTIME_DEPENDENCIES PRE_EXCLUDE_REGEXES "libc" "ld" "libdl" "libgcc" "libstdc" "libm.so"
         RUNTIME
         DESTINATION "${CMAKE_INSTALL_BINDIR}/utils"
 )

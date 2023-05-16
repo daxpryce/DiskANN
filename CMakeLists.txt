@@ -16,7 +16,7 @@
 
 # Some variables like MSVC are defined only after project(), so put that first.
 
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.21)
 
 project(diskann)
 
