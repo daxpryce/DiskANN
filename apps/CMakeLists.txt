@@ -35,5 +35,6 @@ install(TARGETS build_memory_index
         range_search_disk_index
         test_streaming_scenario
         test_insert_deletes_consolidate
+        RUNTIME_DEPENDENCIES PRE_EXCLUDE_REGEXES "libc" "ld" "libdl" "libgcc" "libstdc" "libm.so"
         RUNTIME
 )
