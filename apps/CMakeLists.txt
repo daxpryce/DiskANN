@@ -27,14 +27,17 @@ target_link_libraries(test_streaming_scenario ${PROJECT_NAME} ${DISKANN_TOOLS_TC
 add_executable(test_insert_deletes_consolidate test_insert_deletes_consolidate.cpp)
 target_link_libraries(test_insert_deletes_consolidate ${PROJECT_NAME} ${DISKANN_TOOLS_TCMALLOC_LINK_OPTIONS} Boost::program_options)
 
-install(TARGETS build_memory_index
-        build_stitched_index
-        search_memory_index
-        build_disk_index
-        search_disk_index
-        range_search_disk_index
-        test_streaming_scenario
-        test_insert_deletes_consolidate
-        RUNTIME_DEPENDENCIES PRE_EXCLUDE_REGEXES "libc" "ld" "libdl" "libgcc" "libstdc" "libm.so"
-        RUNTIME
-)
+if (NOT MSVC)
+    cmake_minimum_required(VERSION 3.21)
+    install(TARGETS build_memory_index
+            build_stitched_index
+            search_memory_index
+            build_disk_index
+            search_disk_index
+            range_search_disk_index
+            test_streaming_scenario
+            test_insert_deletes_consolidate
+            RUNTIME_DEPENDENCIES PRE_EXCLUDE_REGEXES "libc" "ld" "libdl" "libgcc" "libstdc" "libm.so"
+            RUNTIME
+    )
+endif()
