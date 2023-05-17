@@ -16,7 +16,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Setup CMake
+      - name: Add VisualStudio command line tools into path (Windows only)
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup CMake (Overrides VS Command Line Tools CMake)
         uses: jwlawson/actions-setup-cmake@v1.13
         with:
           cmake-version: '3.21.x'
@@ -35,9 +38,6 @@ jobs:
           path: ./dist
       # ------------ End Linux Build ---------------
       # ------------ Windows Build ---------------
-      - name: Add VisualStudio command line tools into path
-        if: runner.os == 'Windows'
-        uses: ilammy/msvc-dev-cmd@v1
       - name: Run configure and build for Windows
         if: runner.os == 'Windows'
         run: |
