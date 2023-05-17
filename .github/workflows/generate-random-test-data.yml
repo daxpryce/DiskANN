@@ -15,8 +15,9 @@ jobs:
         working-directory: ./dist/
         run: |
           export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(readlink lib)"
+          echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
+          
           ldd bin/utils/rand_data_gen
-          echo $LD_LIBRARY_PATH
           
           find bin -type f -print0 | xargs -0 chmod +x
           mkdir data
