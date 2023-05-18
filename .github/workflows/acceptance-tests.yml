@@ -50,6 +50,7 @@ jobs:
           path: dist/data/
 
       - name: Make Executables Executable
+        working-directory: ./dist/
         if: runner.os == 'Linux'
         run: |
           find bin -type f -print0 | xargs -0 chmod +x
@@ -148,6 +149,7 @@ jobs:
           path: data/
 
       - name: Make Executables Executable
+        working-directory: ./dist/
         if: runner.os == 'Linux'
         run: |
           find bin -type f -print0 | xargs -0 chmod +x
@@ -213,6 +215,7 @@ jobs:
           path: data/
 
       - name: Make Executables Executable
+        working-directory: ./dist/
         if: runner.os == 'Linux'
         run: |
           find bin -type f -print0 | xargs -0 chmod +x
@@ -329,6 +332,7 @@ jobs:
           path: data/
 
       - name: Make Executables Executable
+        working-directory: ./dist/
         if: runner.os == 'Linux'
         run: |
           find bin -type f -print0 | xargs -0 chmod +x
