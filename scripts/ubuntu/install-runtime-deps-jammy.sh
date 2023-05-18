@@ -6,4 +6,5 @@ apt install libaio1 \
   libboost-program-options1.74.0 \
   libmkl-avx512 \
   libmkl-def \
-  libmkl-core
+  libmkl-core \
+  libmkl-intel-ilp64
