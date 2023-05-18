@@ -8,4 +8,5 @@ apt install libaio1 \
   libmkl-def \
   libmkl-core \
   libmkl-intel-ilp64 \
-  libmkl-intel-thread
+  libmkl-intel-thread \
+  libomp5
