@@ -77,7 +77,6 @@ add_executable(stats_label_data stats_label_data.cpp)
 target_link_libraries(stats_label_data ${PROJECT_NAME} Boost::program_options)
 
 if (NOT MSVC)
-    cmake_minimum_required(VERSION 3.21)
     include(GNUInstallDirs)
     install(TARGETS fvecs_to_bin
             fvecs_to_bvecs
@@ -104,7 +103,6 @@ if (NOT MSVC)
             create_disk_layout
             generate_synthetic_labels
             stats_label_data
-            RUNTIME_DEPENDENCIES PRE_EXCLUDE_REGEXES "libc" "ld" "libdl" "libgcc" "libstdc" "libm.so"
             RUNTIME
             DESTINATION "${CMAKE_INSTALL_BINDIR}/utils"
     )

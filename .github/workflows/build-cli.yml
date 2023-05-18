@@ -20,7 +20,7 @@ jobs:
       - name: Prepare and Execute Build
         if: ${{ runner.os == 'Linux' }}
         run: |
-          sudo scripts/install-linux-deps.sh 
+          sudo scripts/ubuntu/install-dev-deps.sh 
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
           cmake --build build -- -j
           cmake --install build --prefix="dist"

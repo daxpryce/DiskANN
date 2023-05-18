@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Install Runtime Dependencies
+        run: |
+          sudo scripts/ubuntu/install-runtime-deps.sh
       - uses: actions/download-artifact@v3
         with:
           name: cli-store-linux
@@ -14,10 +17,6 @@ jobs:
       - name: Generate Random Points and Compute Groundtruth
         working-directory: ./dist/
         run: |
-          export DISKANN_LIB=$(readlink -f lib)
-          echo "DiskANN Lib Directory: $DISKANN_LIB"
-          sudo ldconfig "$DISKANN_LIB"
-          
           ldd bin/utils/rand_data_gen
           
           find bin -type f -print0 | xargs -0 chmod +x
