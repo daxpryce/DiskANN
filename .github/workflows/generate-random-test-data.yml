@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Runtime Dependencies
         run: |
-          sudo scripts/ubuntu/install-runtime-deps.sh
+          sudo scripts/ubuntu/install-runtime-deps-jammy.sh
       - uses: actions/download-artifact@v3
         with:
           name: cli-store-linux
