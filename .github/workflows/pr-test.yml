@@ -1,5 +1,5 @@
 name: DiskANN Pull Request Build and Test
-on: [pull_request]
+on: [workflow_call] # pull_request]
 jobs:
   docker-container-build:
     name: Docker Container Build
