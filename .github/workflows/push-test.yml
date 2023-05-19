@@ -12,7 +12,6 @@ jobs:
       run:
         shell: bash
     steps:
-      name: DiskANN Build CLI Applications
       uses: ./.github/actions/build.yml
 #  python:
 #    name: DiskANN Build Python Wheel
