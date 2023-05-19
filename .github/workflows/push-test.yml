@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 1
       - name: Code Formatting Test
-        uses: ./.github/actions/format.yml
+        uses: ./.github/actions/format-check
   docker-container-build:
     name: Docker Container Build
     needs: [formatting-check]
