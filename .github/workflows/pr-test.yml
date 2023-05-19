@@ -1,26 +1,26 @@
 name: DiskANN Pull Request Build and Test
 on: [workflow_call] # pull_request]
 jobs:
-  docker-container-build:
-    name: Docker Container Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Docker build
-        run: |
-          docker build .
-  build:
-    name: DiskANN Build CLI Applications
-    uses: ./.github/workflows/build-cli.yml
-  data:
-    name: Generate Random Test Data
-    uses: ./.github/workflows/generate-random-test-data.yml
-    needs: [build]
-  acceptance:
-    name: DiskANN Acceptance Tests
-    uses: ./.github/workflows/acceptance-tests.yml
-    needs: [build, data]
-#  python:
-#    name: DiskANN Build Python Wheel
-#    uses: ./.github/workflows/build-python.yml
+  common:
+    name: DiskANN Common Build Checks
+    uses: ./.github/workflows/common.yml
+  in-mem-pq:
+    name: In-Memory with PQ
+    uses: ./.github/workflows/in-mem-pq.yml
+    needs: [common.formatting-check]
+  in-mem-no-pq:
+    name: In-Memory No PQ
+    uses: ./.github/workflows/in-mem-no-pq.yml
+    needs: [common.formatting-check]
+  disk-pq:
+    name: Disk with PQ
+    uses: ./.github/workflows/disk-pq.yml
+    needs: [common.formatting-check]
+  labels:
+    name: Labels
+    uses: ./.github/workflows/labels.yml
+    needs: [common.formatting-check]
+  dynamic:
+    name: Dynamic
+    uses: ./.github/workflows/dynamic.yml
+    needs: [common.formatting-check]
