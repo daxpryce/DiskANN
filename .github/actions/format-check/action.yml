@@ -5,7 +5,9 @@ runs:
   steps:
     - name: Checking code formatting...
       run: |
-        sudo apt install cmake clang-format
-        cmake -S . -B build -DPYBIND=True -DRESTAPI=True -DCMAKE_BUILD_TYPE=Release
-        make -C build checkformat
+        sudo apt install clang-format
+        find include -name '*.h' -type f -print0 | xargs -0 -P 16 /usr/bin/clang-format --Werror --dry-run
+        find src -name '*.cpp' -type f -print0 | xargs -0 -P 16 /usr/bin/clang-format --Werror --dry-run
+        find apps -name '*.cpp' -type f -print0 | xargs -0 -P 16 /usr/bin/clang-format --Werror --dry-run
+        find python -name '*.cpp' -type f -print0 | xargs -0 -P 16 /usr/bin/clang-format --Werror --dry-run
       shell: bash
