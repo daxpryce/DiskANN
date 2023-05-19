@@ -2,6 +2,7 @@ name: DiskANN Pull Request Build and Test
 on: [pull_request]
 jobs:
   docker-container-build:
+    name: Docker Container Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

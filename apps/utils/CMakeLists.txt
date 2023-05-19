@@ -104,6 +104,5 @@ if (NOT MSVC)
             generate_synthetic_labels
             stats_label_data
             RUNTIME
-            DESTINATION "${CMAKE_INSTALL_BINDIR}/utils"
     )
 endif()

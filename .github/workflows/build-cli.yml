@@ -48,5 +48,5 @@ jobs:
         if: matrix.os == 'windows-latest'
         with:
           name: cli-store-windows-latest
-          path: ./x64/${{inputs.build-type}}/
+          path: ./x64/Release/
       # ------------ End Windows Build ---------------
