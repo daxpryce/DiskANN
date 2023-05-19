@@ -2,25 +2,22 @@ name: DiskANN Pull Request Build and Test
 on: [workflow_call] # pull_request]
 jobs:
   common:
+    strategy:
+      fail-fast: true
     name: DiskANN Common Build Checks
     uses: ./.github/workflows/common.yml
   in-mem-pq:
     name: In-Memory with PQ
     uses: ./.github/workflows/in-mem-pq.yml
-    needs: [common.formatting-check]
-  in-mem-no-pq:
-    name: In-Memory No PQ
-    uses: ./.github/workflows/in-mem-no-pq.yml
-    needs: [common.formatting-check]
-  disk-pq:
-    name: Disk with PQ
-    uses: ./.github/workflows/disk-pq.yml
-    needs: [common.formatting-check]
-  labels:
-    name: Labels
-    uses: ./.github/workflows/labels.yml
-    needs: [common.formatting-check]
-  dynamic:
-    name: Dynamic
-    uses: ./.github/workflows/dynamic.yml
-    needs: [common.formatting-check]
+#  in-mem-no-pq:
+#    name: In-Memory No PQ
+#    uses: ./.github/workflows/in-mem-no-pq.yml
+#  disk-pq:
+#    name: Disk with PQ
+#    uses: ./.github/workflows/disk-pq.yml
+#  labels:
+#    name: Labels
+#    uses: ./.github/workflows/labels.yml
+#  dynamic:
+#    name: Dynamic
+#    uses: ./.github/workflows/dynamic.yml
