@@ -28,7 +28,7 @@ jobs:
         if: ${{ runner.os == 'Linux' }}
         with:
           name: cli-store-linux
-          path: ./dist
+          path: ./dist/bin
       # ------------ End Linux Build ---------------
       # ------------ Windows Build ---------------
       - name: Add VisualStudio command line tools into path
@@ -43,7 +43,7 @@ jobs:
         if: matrix.os == 'windows-2019'
         with:
           name: cli-store-windows-2019
-          path: ./x64/${{inputs.build-type}}/
+          path: ./x64/Release/
       - uses: actions/upload-artifact@v3
         if: matrix.os == 'windows-latest'
         with:
