@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 1
-      - name: Code Formatting Test
+      - name: Checking code formatting...
         uses: ./.github/actions/format-check
   docker-container-build:
     name: Docker Container Build

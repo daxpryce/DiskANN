@@ -1,4 +1,4 @@
-name: 'Code Formatting Check'
+name: 'Checking code formatting...'
 description: 'Ensures code complies with code formatting rules'
 runs:
   using: "composite"
