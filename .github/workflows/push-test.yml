@@ -25,7 +25,7 @@ jobs:
           submodules: true
       - run: |
           pwd
-          ls -R ..
+          ls -aR .
         shell: bash
       - name: DiskANN Build CLI Applications
         uses: ./.github/actions/build
