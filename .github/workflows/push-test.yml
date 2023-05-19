@@ -2,6 +2,8 @@ name: DiskANN Push Build
 on: [push]
 jobs:
   common:
+    strategy:
+      fail-fast: true
     name: DiskANN Common Build Checks
     uses: ./.github/workflows/common.yml
   build:
@@ -11,7 +13,6 @@ jobs:
         os: [ ubuntu-latest, windows-2019, windows-latest ]
     name: Build for ${{matrix.os}}
     runs-on: ${{matrix.os}}
-    needs: [common.formatting-check]
     defaults:
       run:
         shell: bash
