@@ -1,6 +1,30 @@
 name: DiskANN Push Build
 on: [push]
 jobs:
+  formatting-check:
+    strategy:
+      fail-fast: true
+    name: Code Formatting Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: Code Formatting Test
+        uses: ./.github/actions/format.yml
+  docker-container-build:
+    name: Docker Container Build
+    needs: [formatting-check]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: Docker build
+        run: |
+          docker build .
   build:
     strategy:
       fail-fast: false
@@ -8,6 +32,7 @@ jobs:
         os: [ ubuntu-latest, windows-2019, windows-latest ]
     name: Build for ${{matrix.os}}
     runs-on: ${{matrix.os}}
+    needs: [formatting-check]
     defaults:
       run:
         shell: bash

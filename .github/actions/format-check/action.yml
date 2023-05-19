@@ -1,0 +1,11 @@
+name: 'Code Formatting Check'
+description: 'Ensures code complies with code formatting rules'
+runs:
+  using: "composite"
+  steps:
+    - name: Checking code formatting...
+      run: |
+        sudo apt install cmake clang-format
+        cmake -S . -B build -DPYBIND=True -DRESTAPI=True -DCMAKE_BUILD_TYPE=Release
+        make -C build checkformat
+      shell: bash
