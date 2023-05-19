@@ -54,7 +54,7 @@ jobs:
       - name: Make Executables Executable
         if: runner.os == 'Linux'
         run: |
-          find dist/bin -type f -print0 | xargs -0 chmod +x
+          find dist -type f -print0 | xargs -0 chmod +x
 
       - name: build and search in-memory index with L2 metrics (float)
         if: success() || failure()
@@ -152,7 +152,7 @@ jobs:
       - name: Make Executables Executable
         if: runner.os == 'Linux'
         run: |
-          find dist/bin -type f -print0 | xargs -0 chmod +x
+          find dist -type f -print0 | xargs -0 chmod +x
 
       - name: build and search in-memory index with L2 metric with PQ based distance comparisons (float)
         if: success() || failure()
@@ -225,7 +225,7 @@ jobs:
         working-directory: dist
         if: runner.os == 'Linux'
         run: |
-          find dist/bin -type f -print0 | xargs -0 chmod +x
+          find dist/ -type f -print0 | xargs -0 chmod +x
 
       - name: build and search disk index (one shot graph build, L2, no diskPQ) (float)
         if: success() || failure()
@@ -350,7 +350,7 @@ jobs:
         working-directory: dist
         if: runner.os == 'Linux'
         run: |
-          find dist/bin -type f -print0 | xargs -0 chmod +x
+          find dist/ -type f -print0 | xargs -0 chmod +x
 
       - name: build and search in-memory index with labels using L2 and Cosine metrics (random distributed labels)
         if: success() || failure()
@@ -453,7 +453,7 @@ jobs:
       - name: Make Executables Executable
         if: runner.os == 'Linux'
         run: |
-          find dist/bin -type f -print0 | xargs -0 chmod +x
+          find dist/ -type f -print0 | xargs -0 chmod +x
 
       - name: test a streaming index (float)
         run: |
