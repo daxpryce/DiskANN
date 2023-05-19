@@ -3,14 +3,6 @@ description: 'Prepares DiskANN build environment and executes build'
 runs:
   using: "composite"
   steps:
-    - name: Checkout repository
-      if: ${{ runner.os == 'Linux' }}
-      uses: actions/checkout@v2
-    - name: Checkout repository
-      if: ${{ runner.os == 'Windows' }}
-      uses: actions/checkout@v2
-      with:
-        submodules: true
     # ------------ Linux Build ---------------
     - name: Prepare and Execute Build
       if: ${{ runner.os == 'Linux' }}
