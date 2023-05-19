@@ -11,8 +11,7 @@ runs:
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
         cmake --build build -- -j
         cmake --install build --prefix="dist"
-      shell:
-        bash
+      shell: bash
     # ------------ End Linux Build ---------------
     # ------------ Windows Build ---------------
     - name: Add VisualStudio command line tools into path
