@@ -1,5 +1,5 @@
 name: DiskANN Pull Request Build and Test
-on: [workflow_call] # pull_request]
+on: [pull_request]
 jobs:
   common:
     strategy:
