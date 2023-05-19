@@ -23,7 +23,6 @@ jobs:
         with:
           fetch-depth: 1
           submodules: true
-        shell: bash
       - name: DiskANN Build CLI Applications
         uses: ./.github/actions/build
 #  python:
