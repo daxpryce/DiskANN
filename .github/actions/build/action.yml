@@ -24,6 +24,5 @@ runs:
         cd ..
         mkdir dist
         mv .\x64\Release\ .\dist\bin
-        ls .\dist\bin
       shell: cmd
     # ------------ End Windows Build ---------------
