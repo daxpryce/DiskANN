@@ -10,7 +10,7 @@ jobs:
     name: In-Memory with PQ
     uses: ./.github/workflows/in-mem-pq.yml
   in-mem-no-pq:
-    name: In-Memory No PQ
+    name: In-Memory without PQ
     uses: ./.github/workflows/in-mem-no-pq.yml
   disk-pq:
     name: Disk with PQ
