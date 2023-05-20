@@ -9,15 +9,15 @@ jobs:
   in-mem-pq:
     name: In-Memory with PQ
     uses: ./.github/workflows/in-mem-pq.yml
-#  in-mem-no-pq:
-#    name: In-Memory No PQ
-#    uses: ./.github/workflows/in-mem-no-pq.yml
-#  disk-pq:
-#    name: Disk with PQ
-#    uses: ./.github/workflows/disk-pq.yml
-#  labels:
-#    name: Labels
-#    uses: ./.github/workflows/labels.yml
-#  dynamic:
-#    name: Dynamic
-#    uses: ./.github/workflows/dynamic.yml
+  in-mem-no-pq:
+    name: In-Memory No PQ
+    uses: ./.github/workflows/in-mem-no-pq.yml
+  disk-pq:
+    name: Disk with PQ
+    uses: ./.github/workflows/disk-pq.yml
+  labels:
+    name: Labels
+    uses: ./.github/workflows/labels.yml
+  dynamic:
+    name: Dynamic
+    uses: ./.github/workflows/dynamic.yml
